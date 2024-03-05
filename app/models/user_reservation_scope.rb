@@ -4,7 +4,7 @@ class UserReservationScope
   end
 
   def absolute_query
-    Reservation.active.joins('LEFT JOIN payments ON reservations.id = payments.reservation_id')
+    Reservation.joins('LEFT JOIN payments ON reservations.id = payments.reservation_id')
       .joins('LEFT JOIN cards ON cards.id = payments.card_id')
       .where(cards: { user_id: @user.id })
   end
