@@ -77,7 +77,7 @@ gem 'gon'
 gem 'humanize_boolean'
 
 # Analytics
-gem 'analytics-ruby', git: 'git@github.com:segmentio/analytics-ruby.git'
+# gem 'analytics-ruby', git: 'git@github.com:segmentio/analytics-ruby.git'
 gem 'referer-parser', '~> 0.3.0'
 
 # Others

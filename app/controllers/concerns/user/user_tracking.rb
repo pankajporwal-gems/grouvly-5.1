@@ -66,7 +66,7 @@ module User::UserTracking
     if current_user
       options = user_traits.merge(options) if current_user.user_info.present?
 
-      segment_client.track(user_id: user_identifier, event: name, properties: options, context: context)
+      # segment_client.track(user_id: user_identifier, event: name, properties: options, context: context)
     end
   end
 
