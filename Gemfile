@@ -58,7 +58,7 @@ gem 'jquery-rails'
 gem 'slim'
 gem 'font-awesome-sass', '4.7.0'
 gem 'i18n-js', '<= 4.0.1'
-gem 'asset_sync'
+# gem 'asset_sync'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
