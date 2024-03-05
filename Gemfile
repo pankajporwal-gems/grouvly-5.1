@@ -80,6 +80,9 @@ gem 'humanize_boolean'
 # gem 'analytics-ruby', git: 'git@github.com:segmentio/analytics-ruby.git'
 gem 'referer-parser', '~> 0.3.0'
 
+# For dummy data
+gem 'faker'
+
 # Others
 # gem 'rack-reverse-proxy', require: 'rack/reverse_proxy'
 
@@ -95,7 +98,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'simplecov', require: false
   gem 'fabrication'
-  gem 'faker'
   gem 'bullet'
   gem 'rr'
   gem 'poltergeist'
