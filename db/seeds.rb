@@ -59,10 +59,10 @@ user_info.save
     provider: "facebook",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    oauth_token: Faker::Internet.password(30),
+    oauth_token: Faker::Internet.password(min_length: 30),
     oauth_expires_at: Time.now + 60.days,
-    slug: Faker::Internet.password(12),
-    uid: Faker::Internet.password(20)
+    slug: Faker::Internet.password(min_length: 12),
+    uid: Faker::Internet.password(min_length: 20)
   )
 
   UserTransition.create(to_state: "pending", metadata: { occured_on: Time.now }.to_json, sort_key: 0, user_id: new_user.id)

@@ -56,7 +56,7 @@ gem 'braintree'
 # Assets and template related gems
 gem 'jquery-rails'
 gem 'slim'
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '4.7.0'
 gem 'i18n-js', '<= 4.0.1'
 gem 'asset_sync'
 
@@ -99,7 +99,6 @@ group :development, :test do
   gem 'bullet'
   gem 'rr'
   gem 'poltergeist'
-  gem 'selenium-webdriver'
   gem 'launchy'
   
 end
