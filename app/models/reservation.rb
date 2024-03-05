@@ -1,9 +1,9 @@
 class Reservation < ApplicationRecord
-  include Statesman::Adapters::ActiveRecordQueries
-
+  include Statesman::Adapters::ActiveRecordQueries[transition_class: StateMachines::Reservation, initial_state: :new]
   after_create :generate_slug
 
   belongs_to :user
+  has_many :transitions, class_name: 'StateMachines::Reservation', autosave: false
   has_many :matched_reservations, foreign_key: 'first_reservation_id', dependent: :destroy
   has_many :inverse_matched_reservations, class_name: 'MatchedReservation', foreign_key: 'second_reservation_id', dependent: :destroy
   has_many :venue_booking_notifications
