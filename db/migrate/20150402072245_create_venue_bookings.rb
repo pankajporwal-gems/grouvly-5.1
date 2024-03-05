@@ -1,4 +1,4 @@
-class CreateVenueBookings < ActiveRecord::Migration
+class CreateVenueBookings < ActiveRecord::Migration[4.2]
   def change
     create_table :venue_bookings do |t|
       t.belongs_to  :venue, null: false

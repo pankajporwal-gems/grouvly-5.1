@@ -1,4 +1,4 @@
-class AddMissingIndeces < ActiveRecord::Migration
+class AddMissingIndeces < ActiveRecord::Migration[4.2]
   def change
     add_index :cards, :user_id
     add_index :credits, :user_id

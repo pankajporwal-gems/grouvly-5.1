@@ -1,4 +1,4 @@
-class CreateVenueBookingNotifications < ActiveRecord::Migration
+class CreateVenueBookingNotifications < ActiveRecord::Migration[4.2]
   def change
     create_table :venue_booking_notifications do |t|
       t.belongs_to :venue_booking

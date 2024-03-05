@@ -1,4 +1,4 @@
-class AddAddressMerchantReferenceCodeToPayments < ActiveRecord::Migration
+class AddAddressMerchantReferenceCodeToPayments < ActiveRecord::Migration[4.2]
   def change
     add_column :payments, :name, :string
     add_column :payments, :street1, :string

@@ -1,4 +1,4 @@
-class AddCardDetailsToOldUsers < ActiveRecord::Migration
+class AddCardDetailsToOldUsers < ActiveRecord::Migration[4.2]
   def change
     Payment.where(card_id: nil).each do |payment|
       card = Card.new({ user_id: payment.user_id, token: 'free', bin: 4111, card_type: 'visa', last_digits: 1111 })

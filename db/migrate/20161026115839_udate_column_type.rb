@@ -1,4 +1,4 @@
-class UdateColumnType < ActiveRecord::Migration
+class UdateColumnType < ActiveRecord::Migration[4.2]
   def up
     change_column :user_infos, :height, :string
   end

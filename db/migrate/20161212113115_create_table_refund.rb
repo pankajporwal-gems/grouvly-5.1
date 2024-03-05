@@ -1,4 +1,4 @@
-class CreateTableRefund < ActiveRecord::Migration
+class CreateTableRefund < ActiveRecord::Migration[4.2]
   def change
     create_table :refunds do |t|
       t.belongs_to  :reservation

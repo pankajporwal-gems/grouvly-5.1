@@ -1,4 +1,4 @@
-class AddMemberInfoColumns < ActiveRecord::Migration
+class AddMemberInfoColumns < ActiveRecord::Migration[4.2]
   def change
     add_column :user_infos, :work_category, :string, after: :work_history
     add_column :user_infos, :origin, :string, before: :ethnicity

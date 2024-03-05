@@ -1,4 +1,4 @@
-class RemoveNotNullConstraintsInUserInfo < ActiveRecord::Migration
+class RemoveNotNullConstraintsInUserInfo < ActiveRecord::Migration[4.2]
   def change
     change_column_null :user_infos, :gender_to_match, true
     change_column_null :user_infos, :location, true

@@ -1,4 +1,4 @@
-class CreateUserTransitions < ActiveRecord::Migration
+class CreateUserTransitions < ActiveRecord::Migration[4.2]
   def change
     create_table :user_transitions do |t|
       t.string  :to_state

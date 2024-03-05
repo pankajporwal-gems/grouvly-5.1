@@ -1,4 +1,4 @@
-class CreateVenueBookingTransitions < ActiveRecord::Migration
+class CreateVenueBookingTransitions < ActiveRecord::Migration[4.2]
   def change
     create_table :venue_booking_transitions do |t|
       t.string :to_state, null: false

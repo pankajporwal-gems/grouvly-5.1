@@ -1,4 +1,4 @@
-class CreateUserInfos < ActiveRecord::Migration
+class CreateUserInfos < ActiveRecord::Migration[4.2]
   def change
     create_table :user_infos do |t|
       t.belongs_to :user, null: false

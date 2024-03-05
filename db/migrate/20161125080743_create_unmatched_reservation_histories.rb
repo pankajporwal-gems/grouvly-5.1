@@ -1,4 +1,4 @@
-class CreateUnmatchedReservationHistories < ActiveRecord::Migration
+class CreateUnmatchedReservationHistories < ActiveRecord::Migration[4.2]
   def change
     create_table :unmatched_reservation_histories do |t|
       t.references :reservation

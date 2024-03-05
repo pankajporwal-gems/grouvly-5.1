@@ -1,4 +1,4 @@
-class CreateUserNotes < ActiveRecord::Migration
+class CreateUserNotes < ActiveRecord::Migration[4.2]
   def change
     create_table :user_notes do |t|
       t.belongs_to  :user

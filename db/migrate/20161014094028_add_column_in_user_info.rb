@@ -1,4 +1,4 @@
-class AddColumnInUserInfo < ActiveRecord::Migration
+class AddColumnInUserInfo < ActiveRecord::Migration[4.2]
   def change
     add_column :user_infos, :meet_new_people_age, :string
     add_column :user_infos, :native_place, :string

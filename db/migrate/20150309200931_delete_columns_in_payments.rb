@@ -1,4 +1,4 @@
-class DeleteColumnsInPayments < ActiveRecord::Migration
+class DeleteColumnsInPayments < ActiveRecord::Migration[4.2]
   def change
     remove_column :payments, :data
     remove_column :payments, :name

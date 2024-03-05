@@ -1,4 +1,4 @@
-class CreateMatchedReservationTransitions < ActiveRecord::Migration
+class CreateMatchedReservationTransitions < ActiveRecord::Migration[4.2]
   def change
     create_table :matched_reservation_transitions do |t|
       t.string :to_state, null: false

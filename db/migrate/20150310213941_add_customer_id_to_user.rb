@@ -1,4 +1,4 @@
-class AddCustomerIdToUser < ActiveRecord::Migration
+class AddCustomerIdToUser < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :customer_id, :string
     remove_column :cards, :customer_id
