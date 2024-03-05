@@ -2,7 +2,7 @@ module User::VenueNotifications
   extend ActiveSupport::Concern
 
   included do
-    before_filter :check_venue_notification_is_valid, only: :confirm_venue_notification
+    before_action :check_venue_notification_is_valid, only: :confirm_venue_notification
   end
 
   def venue_notification

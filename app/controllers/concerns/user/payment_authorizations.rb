@@ -2,15 +2,15 @@ module User::PaymentAuthorizations
   extend ActiveSupport::Concern
 
   included do
-    skip_before_filter :check_user_blocked
-    skip_before_filter :check_user_rejected
-    skip_before_filter :check_user_deauthorized
-    skip_before_filter :check_user_pending
-    before_filter :check_reservation_date, except: [:validate_voucher]
-    before_filter :check_reservation_is_full, except: [:validate_voucher]
-    before_filter :check_user_already_has_reservation, except: [:validate_voucher]
-    before_filter :check_user_same_gender, except: [:validate_voucher]
-    before_filter :check_if_user_can_make_new_payments, except: [:validate_voucher]
+    skip_before_action :check_user_blocked
+    skip_before_action :check_user_rejected
+    skip_before_action :check_user_deauthorized
+    skip_before_action :check_user_pending
+    before_action :check_reservation_date, except: [:validate_voucher]
+    before_action :check_reservation_is_full, except: [:validate_voucher]
+    before_action :check_user_already_has_reservation, except: [:validate_voucher]
+    before_action :check_user_same_gender, except: [:validate_voucher]
+    before_action :check_if_user_can_make_new_payments, except: [:validate_voucher]
   end
 
   private

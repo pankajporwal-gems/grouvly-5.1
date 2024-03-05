@@ -4,7 +4,7 @@ class User::ReservationsController < User::UsersController
   include User::VenueNotifications
   include User::UserTracking
 
-  before_filter :get_reservation, only: [:roll, :roll_confirmed, :refund_amount]
+  before_action :get_reservation, only: [:roll, :roll_confirmed, :refund_amount]
 
   def new
     @new_reservation_presenter = NewReservationPresenter.new(reservation)

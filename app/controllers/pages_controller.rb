@@ -2,13 +2,13 @@ class PagesController < ApplicationController
   include User::UserAuthentication
   include User::UserTracking
 
-  skip_before_filter :verify_authenticity_token, only: :index
-  skip_before_filter :authenticate_user
-  skip_before_filter :check_user_blocked
-  skip_before_filter :check_user_rejected
-  skip_before_filter :check_user_deauthorized
-  skip_before_filter :check_membership_info
-  skip_before_filter :check_user_pending
+  # skip_before_action :verify_authenticity_token, only: :index
+  skip_before_action :authenticate_user
+  skip_before_action :check_user_blocked
+  skip_before_action :check_user_rejected
+  skip_before_action :check_user_deauthorized
+  skip_before_action :check_membership_info
+  # skip_before_action :check_user_pending
 
   def index
     if current_user

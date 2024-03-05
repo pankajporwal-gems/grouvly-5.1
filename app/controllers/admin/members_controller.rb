@@ -1,6 +1,6 @@
 class Admin::MembersController < Admin::AdminsController
-  before_filter :check_member_is_valid, only: [:show]
-   before_filter :get_user, only: [:show, :edit, :update]
+  before_action :check_member_is_valid, only: [:show]
+   before_action :get_user, only: [:show, :edit, :update]
 
 
   def index

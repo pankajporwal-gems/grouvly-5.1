@@ -1,7 +1,7 @@
 class Admin::ApplicantsController < Admin::AdminsController
   include Admin::AdminTracking
 
-  before_filter :check_applicant_is_valid, only: [:show, :accept, :accept_member, :reject, :reject_member]
+  before_action :check_applicant_is_valid, only: [:show, :accept, :accept_member, :reject, :reject_member]
 
   def index
     if params[:location]

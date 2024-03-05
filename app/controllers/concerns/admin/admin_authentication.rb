@@ -2,7 +2,7 @@ module Admin::AdminAuthentication
   extend ActiveSupport::Concern
 
   included do
-    before_filter :authenticate_admin!
+    before_action :authenticate_admin!
   end
 
   def authenticate_admin!

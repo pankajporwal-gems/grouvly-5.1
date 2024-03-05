@@ -2,13 +2,13 @@ module User::UserAuthentication
   extend ActiveSupport::Concern
 
   included do
-    # before_filter :authenticate_user, except: [:join, :confirm_venue_notification]
-    before_filter :check_user_blocked, except: [:join, :confirmed, :dashboard, :confirm_venue_notification]
-    before_filter :check_user_rejected, except: [:join, :confirmed, :dashboard, :confirm_venue_notification]
-    before_filter :check_user_deauthorized, except: [:join, :confirmed, :dashboard, :confirm_venue_notification]
-    before_filter :check_membership_info, except: [:join, :confirmed, :dashboard, :confirm_venue_notification]
+    before_action :authenticate_user, except: [:join, :confirm_venue_notification]
+    before_action :check_user_blocked, except: [:join, :confirmed, :dashboard, :confirm_venue_notification]
+    before_action :check_user_rejected, except: [:join, :confirmed, :dashboard, :confirm_venue_notification]
+    before_action :check_user_deauthorized, except: [:join, :confirmed, :dashboard, :confirm_venue_notification]
+    before_action :check_membership_info, except: [:join, :confirmed, :dashboard, :confirm_venue_notification]
 
-    # prepend_before_filter :auto_facebook_login, except: [:join, :confirmed, :dashboard, :confirm_venue_notification]
+    # prepend_before_action :auto_facebook_login, except: [:join, :confirmed, :dashboard, :confirm_venue_notification]
   end
 
   def authenticate_user

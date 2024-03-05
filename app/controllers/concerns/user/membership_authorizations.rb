@@ -2,13 +2,13 @@ module User::MembershipAuthorizations
   extend ActiveSupport::Concern
 
   included do
-    skip_before_filter :check_membership_info, only: [:new, :create]
-    skip_before_filter :check_user_pending, only: [:finish, :invite, :edit, :update, :neighborhoods]
-    skip_before_filter :check_user_rejected, only: [:finish, :invite, :edit, :update, :neighborhoods]
+    skip_before_action :check_membership_info, only: [:new, :create]
+    # skip_before_action :check_user_pending, only: [:finish, :invite, :edit, :update, :neighborhoods]
+    skip_before_action :check_user_rejected, only: [:finish, :invite, :edit, :update, :neighborhoods]
 
-    before_filter :check_membership_info_exists, only: [:new, :create]
-    before_filter :check_membership_rejected_or_pending, only: [:finish]
-    before_filter :check_membership_wing, only: [:apply, :submit_application]
+    before_action :check_membership_info_exists, only: [:new, :create]
+    before_action :check_membership_rejected_or_pending, only: [:finish]
+    before_action :check_membership_wing, only: [:apply, :submit_application]
   end
 
   private
