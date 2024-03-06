@@ -55,9 +55,8 @@ GEM
     bindex (0.8.1)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
-    braintree (3.4.0)
-      builder (>= 3.2.4)
-      libxml-ruby (>= 3.2.0)
+    braintree (2.104.1)
+      builder (>= 2.0.0)
     builder (3.2.4)
     bullet (7.1.6)
       activesupport (>= 3.0.0)
@@ -214,7 +213,6 @@ GEM
     libnotify (0.9.4)
       ffi (>= 1.0.11)
     libv8 (3.16.14.19.1-x86_64-linux)
-    libxml-ruby (5.0.2)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -420,9 +418,6 @@ GEM
     thread_safe (0.3.6)
     tilt (2.3.0)
     timeout (0.4.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (1.2.11)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
@@ -448,7 +443,7 @@ DEPENDENCIES
   awesome_print
   better_errors
   binding_of_caller
-  braintree
+  braintree (= 2.104.1)
   bullet
   byebug
   capybara (~> 2.13)
@@ -504,7 +499,6 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   statesman
   therubyracer
-  turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
