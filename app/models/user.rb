@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  Statesman::Adapters::ActiveRecordQueries[transition_class: StateMachines::User, initial_state: :new]
+  Statesman::Adapters::ActiveRecordQueries[
+    transition_class: StateMachines::UserTransition,
+    initial_state: :new
+  ]
   extend FriendlyId
 
   before_destroy :delete_referrer

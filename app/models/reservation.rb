@@ -1,5 +1,9 @@
 class Reservation < ApplicationRecord
-  include Statesman::Adapters::ActiveRecordQueries[transition_class: StateMachines::Reservation, initial_state: :new]
+  include Statesman::Adapters::ActiveRecordQueries[
+    transition_class: ReservationTransition,
+    initial_state: :new
+  ]
+
   after_create :generate_slug
 
   belongs_to :user
@@ -10,7 +14,7 @@ class Reservation < ApplicationRecord
   has_many :payments, dependent: :destroy
   has_many :refunds, dependent: :destroy
   has_many :unmatched_reservation_histories, dependent: :destroy
-  has_many :reservation_transitions, dependent: :destroy
+  has_many :reservation_transitions, dependent: :destroy, autosave: false
 
   attr_accessor :skip_validation
 
@@ -147,10 +151,6 @@ class Reservation < ApplicationRecord
       other_status = matched_reservation.second_reservation.all_valid_payments.select { |s| s.status != 'success' }
       matched_reservation.complete! unless other_status.any?
     end
-  end
-
-  def schedule
-    super.to_datetime
   end
 
   private
