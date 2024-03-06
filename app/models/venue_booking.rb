@@ -1,5 +1,5 @@
 class VenueBooking < ApplicationRecord
-  include Statesman::Adapters::ActiveRecordQueries
+  Statesman::Adapters::ActiveRecordQueries[transition_class: StateMachines::VenueBooking, initial_state: :new]
 
   belongs_to :venue
   belongs_to :matched_reservation

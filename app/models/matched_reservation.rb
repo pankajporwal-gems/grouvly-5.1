@@ -1,5 +1,5 @@
 class MatchedReservation < ApplicationRecord
-  include Statesman::Adapters::ActiveRecordQueries[transition_class: StateMachines::Reservation, initial_state: :new]
+  include Statesman::Adapters::ActiveRecordQueries[transition_class: StateMachines::MatchedReservation, initial_state: :new]
 
   belongs_to :first_reservation, class_name: 'Reservation'
   belongs_to :second_reservation, class_name: 'Reservation'
