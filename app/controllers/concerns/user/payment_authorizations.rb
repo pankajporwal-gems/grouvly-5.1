@@ -5,7 +5,7 @@ module User::PaymentAuthorizations
     skip_before_action :check_user_blocked
     skip_before_action :check_user_rejected
     skip_before_action :check_user_deauthorized
-    skip_before_action :check_user_pending
+    # skip_before_action :check_user_pending
     before_action :check_reservation_date, except: [:validate_voucher]
     before_action :check_reservation_is_full, except: [:validate_voucher]
     before_action :check_user_already_has_reservation, except: [:validate_voucher]

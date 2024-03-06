@@ -3,7 +3,7 @@ class UserCreator
 
   attr_reader :user
 
-  def initialize(auth, referrer, sources)
+  def initialize(referrer, sources)
     # @user ||= User.where(provider: auth.provider, uid: auth.uid).first
     # @user ||= User.where(provider: auth.provider, uid: auth.uid).first
     # @auth ||= auth

@@ -3,7 +3,7 @@
 .col-sm-12.text-center
   .form-group#block-image
     = link_to current_user.large_profile_picture, class: 'img-colorbox' do
-      = image_tag current_user.large_profile_picture, class: 'img-circle'
+      //= image_tag current_user.large_profile_picture, class: 'img-circle'
 
     // - if current_user.photos.present?
       //- current_user.photos.each do |photo|
@@ -116,7 +116,7 @@
     = f.label :native_place, t('user.memberships.native_place')
   .row
     .pl-15.col-sm-7
-      = f.country_select :native_place, {priority: %w(SG HK)}, {autofocus: true, class: 'form-control input-lg'}
+      = f.select :native_place, options_for_select(['SG', 'HK'] + Carmen::Country.all.map { |country| [country.name, country.code] }), {}, autofocus: true, class: 'form-control input-lg'
 
 
   .form-group

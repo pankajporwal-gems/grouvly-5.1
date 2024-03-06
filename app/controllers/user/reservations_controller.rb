@@ -64,7 +64,7 @@ class User::ReservationsController < User::UsersController
       end
     elsif params[:auto_roll]
       @reservation.update_attribute('is_roll', params[:auto_roll])
-      redirect_to :back
+      redirect_back fallback_location: user_root_url
     end
   end
 

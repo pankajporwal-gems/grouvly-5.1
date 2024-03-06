@@ -72,7 +72,7 @@
           = f.label :native_place, t('user.memberships.native_place'), class: 'col-sm-5 control-label'
 
           .col-sm-7
-            = f.country_select :native_place, {priority: %w(SG HK)}, {autofocus: true, class: 'form-control input-lg'}
+            = f.select :native_place, options_for_select(['SG', 'HK'] + Carmen::Country.all.map { |country| [country.name, country.code] }), {}, autofocus: true, class: 'form-control input-lg'
 
         .form-group
           .col-sm-5.control-label

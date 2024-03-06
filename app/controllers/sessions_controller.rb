@@ -73,7 +73,7 @@ class SessionsController < ApplicationController
   private
 
   def build_user
-    @user_creator ||= UserCreator.new(env['omniauth.auth'], @referrer, tracking_acquisition_sources)
+    @user_creator ||= UserCreator.new(@referrer, tracking_acquisition_sources)
   end
 
   def tracking_acquisition_sources
