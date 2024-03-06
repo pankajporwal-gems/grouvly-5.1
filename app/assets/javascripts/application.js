@@ -12,7 +12,6 @@
 //
 //= require rails-ujs
 //= require jquery
-//= require turbolinks
 //= require jquery/animatescroll.min
 //= require jquery/jquery.infinitescroll
 //= require jquery/jquery.colorbox-min

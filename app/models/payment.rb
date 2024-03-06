@@ -5,8 +5,8 @@ class Payment < ApplicationRecord
 
   has_one :credit, as: :actor, dependent: :destroy
   belongs_to :reservation
-  belongs_to :card
-  belongs_to :voucher
+  belongs_to :card, optional: true
+  belongs_to :voucher, optional: true
   has_many :refunds, dependent: :destroy
 
   attr_accessor :name, :card_number, :cvv, :expiry_month, :expiry_year, :payment_method_nonce, :voucher_code,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20240223103650) do
+ActiveRecord::Schema.define(version: 20240306073025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 20240223103650) do
     t.index ["user_id"], name: "index_credits_on_user_id"
   end
 
+  create_table "demos", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.integer "serial"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "friendships", id: :serial, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "friend_id", null: false
@@ -51,11 +58,12 @@ ActiveRecord::Schema.define(version: 20240223103650) do
 
   create_table "matched_reservation_transitions", id: :serial, force: :cascade do |t|
     t.string "to_state", null: false
-    t.json "metadata", default: "{}"
+    t.json "metadata", default: {}
     t.integer "sort_key", null: false
     t.integer "matched_reservation_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean "most_recent", default: false
     t.index ["matched_reservation_id"], name: "index_matched_reservation_transitions_on_matched_reservation_id"
     t.index ["sort_key", "matched_reservation_id"], name: "by_sort_key_and_matched_reservation_id", unique: true
   end
@@ -112,11 +120,12 @@ ActiveRecord::Schema.define(version: 20240223103650) do
 
   create_table "reservation_transitions", id: :serial, force: :cascade do |t|
     t.string "to_state", null: false
-    t.json "metadata", default: "{}"
+    t.json "metadata", default: {}
     t.integer "sort_key", null: false
     t.integer "reservation_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean "most_recent", default: false
     t.index ["reservation_id"], name: "index_reservation_transitions_on_reservation_id"
     t.index ["sort_key", "reservation_id"], name: "index_reservation_transitions_on_sort_key_and_reservation_id", unique: true
   end
@@ -196,11 +205,12 @@ ActiveRecord::Schema.define(version: 20240223103650) do
 
   create_table "user_transitions", id: :serial, force: :cascade do |t|
     t.string "to_state"
-    t.json "metadata", default: "{}"
+    t.json "metadata", default: {}
     t.integer "sort_key"
     t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean "most_recent", default: false
     t.index ["sort_key", "user_id"], name: "index_user_transitions_on_sort_key_and_user_id", unique: true
     t.index ["user_id"], name: "index_user_transitions_on_user_id"
   end
@@ -243,11 +253,12 @@ ActiveRecord::Schema.define(version: 20240223103650) do
 
   create_table "venue_booking_transitions", id: :serial, force: :cascade do |t|
     t.string "to_state", null: false
-    t.json "metadata", default: "{}"
+    t.json "metadata", default: {}
     t.integer "sort_key", null: false
     t.integer "venue_booking_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean "most_recent", default: false
     t.index ["sort_key", "venue_booking_id"], name: "index_venue_booking_transitions_", unique: true
     t.index ["venue_booking_id"], name: "index_venue_booking_transitions_on_venue_booking_id"
   end
