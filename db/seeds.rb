@@ -22,6 +22,9 @@
 #     end
 #   end
 # end
+UserInfo.destroy_all
+
+User.destroy_all
 
 admin = {
   "id" => 1,

@@ -116,6 +116,7 @@ group :development do
   gem 'awesome_print'
   gem 'hirb'
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'meta_request', '0.7.2'
   gem 'letter_opener'
   gem 'letter_opener_web', '~> 1.2.0'

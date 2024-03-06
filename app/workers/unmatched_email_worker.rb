@@ -1,9 +1,9 @@
 class UnmatchedEmailWorker
-  include Sidekiq::Worker
-  include Sidetiq::Schedulable
-  sidekiq_options queue: 'mailers'
+  # include Sidekiq::Worker
+  # include Sidetiq::Schedulable
+  # sidekiq_options queue: 'mailers'
 
-  recurrence {weekly.day(:thursday).hour_of_day(16)}
+  # recurrence {weekly.day(:thursday).hour_of_day(16)}
 
   # recurrence { hourly.minute_of_hour(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55)}
 

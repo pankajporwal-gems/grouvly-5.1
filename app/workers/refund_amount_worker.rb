@@ -1,8 +1,8 @@
 class RefundAmountWorker
-  include Sidekiq::Worker
-  include Sidetiq::Schedulable
+  # include Sidekiq::Worker
+  # include Sidetiq::Schedulable
 
-  recurrence {weekly.day(:thursday).hour_of_day(21)}
+  # recurrence {weekly.day(:thursday).hour_of_day(21)}
 
   # recurrence { hourly.minute_of_hour(0, 10, 20, 30, 35, 40, 50, 55)}
   def perform

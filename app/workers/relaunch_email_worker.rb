@@ -1,7 +1,7 @@
 class RelaunchEmailWorker
-  include Sidekiq::Worker
-  include Sidetiq::Schedulable
-  sidekiq_options queue: 'relaunch_emails'
+  # include Sidekiq::Worker
+  # include Sidetiq::Schedulable
+  # sidekiq_options queue: 'relaunch_emails'
 
   def perform user_id, voucher_id
     user = User.find(user_id)

@@ -1,6 +1,6 @@
 class NotSettledRefundWorker
-  include Sidekiq::Worker
-  include Sidetiq::Schedulable
+  # include Sidekiq::Worker
+  # include Sidetiq::Schedulable
 
   def perform(reservation_id)
     reservation = Reservation.find(reservation_id)

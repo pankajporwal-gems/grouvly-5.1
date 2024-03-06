@@ -1,5 +1,8 @@
 class UserSerializer < ActiveModel::Serializer
-  self.root = 'user'
+
+  def self.root
+    'user'
+  end
 
   attributes :id, :age, :membership_type, :name, :slug
 

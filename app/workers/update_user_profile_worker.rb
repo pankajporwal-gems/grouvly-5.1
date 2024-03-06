@@ -1,8 +1,8 @@
 class UpdateUserProfileWorker
-  include Sidekiq::Worker
-  include Sidetiq::Schedulable
+  # include Sidekiq::Worker
+  # include Sidetiq::Schedulable
 
-  recurrence { daily }
+  # recurrence { daily }
 
   def perform
     User.find_each do |user|

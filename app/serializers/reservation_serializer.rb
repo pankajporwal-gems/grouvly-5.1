@@ -1,5 +1,8 @@
 class ReservationSerializer < ActiveModel::Serializer
-  self.root = 'reservation'
+
+  def self.root
+    'reservation'
+  end
 
   attributes :id, :slug, :current_state, :roll_count, :wing_quantity
 
