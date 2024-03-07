@@ -26,6 +26,10 @@ class Reservation < ApplicationRecord
   validates :schedule, has_paid_reservation: true, schedule: true, unless: :skip_validation
   validates_associated :user
 
+  def self.in_state(*states)
+    Reservation.joins(:reservation_transitions).where(reservation_transitions: { to_state: states.map(&:to_s) })
+  end
+
   scope :default, -> {
     joins(user: :user_info).uniq
   }

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   Statesman::Adapters::ActiveRecordQueries[
-    transition_class: StateMachines::UserTransition,
+    transition_class: UserTransition,
     initial_state: :new
   ]
   extend FriendlyId
@@ -42,6 +42,8 @@ class User < ApplicationRecord
 
   friendly_id :slug_candidates, use: :slugged
 
+  scope :pending, -> { in_state(:pending)}
+
   scope :users_accepted_yesterday_and_not_booked, -> {
     in_state(:accepted)
       .where('users.id NOT IN (SELECT user_id FROM reservations LEFT JOIN payments ON payments.reservation_id=reservations.id WHERE payments.status=? GROUP BY user_id)', 'success')
@@ -63,6 +65,10 @@ class User < ApplicationRecord
   scope :search_records, -> (params, type) { where(search_query(params, type)) }
 
   has_paper_trail
+
+  def self.in_state(*states)
+    User.joins(:user_transitions).where(user_transitions: { to_state: states.map(&:to_s) })
+  end
 
   def self.search_query(params, type)
     params.map { |param| "(#{type} LIKE '%#{param}%')" }.join('AND')

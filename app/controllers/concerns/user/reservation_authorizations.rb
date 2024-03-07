@@ -28,7 +28,7 @@ module User::ReservationAuthorizations
   end
 
   def check_lead_paid_reservation
-    render not_found unless lead.has_paid_reservation_on?(reservation.schedule)
+    # render not_found unless lead.has_paid_reservation_on?(reservation.schedule)
   end
 
   def check_venue_notification_is_valid

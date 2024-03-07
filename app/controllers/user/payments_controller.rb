@@ -18,20 +18,16 @@ class User::PaymentsController < User::UsersController
     end
   end
 
+  #To bypass payment for portfolio
   def create
     gon.client_token = Grouvly::BraintreeApi.generate_client_token(current_user)
     @new_payment_presenter = NewPaymentPresenter.new(payment)
     set_other_payment_info
     BRAINTREE_LOGGER.info("Payment :: #{payment.inspect}, user_id :: #{current_user.id}")
-    if is_condition_accepted? && payment.save
+    if payment.save
       BRAINTREE_LOGGER.info("Payment_saved :: #{payment.inspect}")
       if payment.card.blank?
-        if payment_collector.send(params[:different_card])
-          payment.update_attributes({ card_id: payment_collector.credit_card.id, status: 'success' })
-          payment_collector.update_credits
-
-          payment_processor = PaymentProcessor.new(payment.reservation)
-          result = payment_processor.capture_all_payments
+          result = 0
           if result == 0
             payment.reservation.enter_payment! if payment.reservation.user == current_user
             BRAINTREE_LOGGER.info("payment_enterd :: #{payment.inspect}")
@@ -43,9 +39,6 @@ class User::PaymentsController < User::UsersController
           else
             payment_error(payment, result)
           end
-        else
-          payment_error(payment, "problem creating customer and payment method")
-        end
       elsif payment.card.present? && payment.card.token == 'free'
          BRAINTREE_LOGGER.info("payment :: payment.card.present? =>  #{payment.card.present? } and  payment.card.token => #{payment.card.token}")
         payment.reservation.enter_payment! if payment.reservation.user == current_user
@@ -60,6 +53,49 @@ class User::PaymentsController < User::UsersController
       end
     end
   end
+
+  # def create
+  #   gon.client_token = Grouvly::BraintreeApi.generate_client_token(current_user)
+  #   @new_payment_presenter = NewPaymentPresenter.new(payment)
+  #   set_other_payment_info
+  #   BRAINTREE_LOGGER.info("Payment :: #{payment.inspect}, user_id :: #{current_user.id}")
+  #   if is_condition_accepted? && payment.save
+  #     BRAINTREE_LOGGER.info("Payment_saved :: #{payment.inspect}")
+  #     if payment.card.blank?
+  #       if payment_collector.send(params[:different_card])
+  #         payment.update_attributes({ card_id: payment_collector.credit_card.id, status: 'success' })
+  #         payment_collector.update_credits
+
+  #         payment_processor = PaymentProcessor.new(payment.reservation)
+  #         result = payment_processor.capture_all_payments
+  #         if result == 0
+  #           payment.reservation.enter_payment! if payment.reservation.user == current_user
+  #           BRAINTREE_LOGGER.info("payment_enterd :: #{payment.inspect}")
+
+  #           BRAINTREE_LOGGER.info("payment_captured :: user => #{current_user.id}, amount => #{payment.amount}, payment_result: #{result} ")
+
+  #           send_emails
+  #           track_payment_complete
+  #         else
+  #           payment_error(payment, result)
+  #         end
+  #       else
+  #         payment_error(payment, "problem creating customer and payment method")
+  #       end
+  #     elsif payment.card.present? && payment.card.token == 'free'
+  #        BRAINTREE_LOGGER.info("payment :: payment.card.present? =>  #{payment.card.present? } and  payment.card.token => #{payment.card.token}")
+  #       payment.reservation.enter_payment! if payment.reservation.user == current_user
+  #       send_emails
+  #       track_payment_complete
+  #     end
+  #   else
+  #     unless is_condition_accepted?
+  #        payment_error(payment, I18n.t('user.payments.check_conditions'))
+  #     else
+  #        payment_error(payment, payment.errors.messages)
+  #     end
+  #   end
+  # end
 
   def validate_voucher
     @voucher = Voucher.where(slug: params[:payment][:voucher_code]).first

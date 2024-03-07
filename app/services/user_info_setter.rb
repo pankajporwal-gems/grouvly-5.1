@@ -73,12 +73,12 @@ class UserInfoSetter
   end
 
   def update_images
-    UpdateImagesJob.perform_now(user.id)
+    # UpdateImagesJob.perform_now(user.id)
   end
 
   def update_from_facebook
     if last_facebook_update > 30.days.ago.to_f
-      UpdateFacebookJob.perform_now(user.id)
+      # UpdateFacebookJob.perform_now(user.id)
       update_images
     end
   end

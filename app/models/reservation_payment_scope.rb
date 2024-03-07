@@ -39,6 +39,7 @@ class ReservationPaymentScope
   end
 
   def recently_booked?
+    return false
     first_payment = all_valid_payments.first
     first_payment.created_at + 10.seconds >= first_payment.updated_at && first_payment.updated_at + 3.seconds >= Chronic.parse('now')
   end

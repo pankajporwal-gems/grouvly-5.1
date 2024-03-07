@@ -24,7 +24,7 @@ class StateMachines::User
     #AcceptMembershipJob.perform_now(user.id)
     #SendFirstReservationInvitationJob.set(wait: 1.minute).perform_now(user.id)
     SendFirstReservationInvitationJob.perform_now(user.id)
-    UpdateFacebookFriendsJob.perform_now(user.id)
+    # UpdateFacebookFriendsJob.perform_now(user.id)
 
     if APP_CONFIG['referral_program_start_date'][user.location].present? &&
       user.changed_state_on?(:accepted) >= APP_CONFIG['referral_program_start_date'][user.location]
