@@ -22,9 +22,10 @@
 #     end
 #   end
 # end
-UserInfo.destroy_all
-
-User.destroy_all
+if !Rails.env.production?
+  UserInfo.destroy_all
+  User.destroy_all
+end
 
 admin = {
   "id" => 1,
